@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+    File: app/code/Codilar/TodoApp/etc/module.xml
+    Declares the module. "sequence" makes sure the GraphQL module loads first.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Codilar_TodoApp">
+        <sequence>
+            <module name="Magento_GraphQl"/>
+        </sequence>
+    </module>
+</config>

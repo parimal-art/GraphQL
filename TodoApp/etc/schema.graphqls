@@ -1,0 +1,35 @@
+# File: app/code/Codilar/TodoApp/etc/schema.graphqls
+# This file describes WHAT the GraphQL API can do.
+# Each @resolver line points to the PHP class that runs for that action.
+
+type Query {
+    todos: [Todo]
+        @resolver(class: "Codilar\\TodoApp\\Model\\Resolver\\Todos")
+        @doc(description: "Get all todos")
+
+    todo(id: Int!): Todo
+        @resolver(class: "Codilar\\TodoApp\\Model\\Resolver\\TodoById")
+        @doc(description: "Get one todo by its id")
+}
+
+type Mutation {
+    createTodo(title: String!, description: String): Todo
+        @resolver(class: "Codilar\\TodoApp\\Model\\Resolver\\CreateTodo")
+        @doc(description: "Create a new todo")
+
+    updateTodo(id: Int!, title: String, description: String, completed: Boolean): Todo
+        @resolver(class: "Codilar\\TodoApp\\Model\\Resolver\\UpdateTodo")
+        @doc(description: "Update an existing todo")
+
+    deleteTodo(id: Int!): Boolean
+        @resolver(class: "Codilar\\TodoApp\\Model\\Resolver\\DeleteTodo")
+        @doc(description: "Delete a todo. Returns true if deleted")
+}
+
+type Todo {
+    id: Int @doc(description: "Todo id")
+    title: String @doc(description: "Todo title")
+    description: String @doc(description: "Todo description")
+    completed: Boolean @doc(description: "true if the todo is done")
+    created_at: String @doc(description: "Date and time when the todo was created")
+}

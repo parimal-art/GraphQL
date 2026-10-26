@@ -1,0 +1,18 @@
+{
+    "name": "codilar/module-todoapp",
+    "description": "Beginner friendly Todo module with GraphQL CRUD",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Codilar\\TodoApp\\": ""
+        }
+    }
+}

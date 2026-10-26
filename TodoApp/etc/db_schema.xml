@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+    File: app/code/Codilar/TodoApp/etc/db_schema.xml
+    Creates the database table "codilar_todoapp_todo" when you run setup:upgrade.
+    Each <column> is one column in the table, each row will be one todo.
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="codilar_todoapp_todo" resource="default" engine="innodb" comment="Codilar Todo Table">
+        <column xsi:type="int" name="todo_id" unsigned="true" nullable="false" identity="true"
+                comment="Todo ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255"
+                comment="Todo Title"/>
+        <column xsi:type="text" name="description" nullable="true"
+                comment="Todo Description"/>
+        <column xsi:type="smallint" name="is_completed" unsigned="true" nullable="false" default="0"
+                comment="0 = Not done, 1 = Done"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="todo_id"/>
+        </constraint>
+    </table>
+</schema>
